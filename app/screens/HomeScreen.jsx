@@ -1,5 +1,4 @@
 import {
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -7,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Platform,
 } from "react-native";
 import React, { useState } from "react";
 import SPACING from "../config/SPACING";
@@ -19,13 +19,18 @@ import coffees from "../config/coffees";
 
 const avatar = require("../../assets/avatar.jpg");
 
+const SafeArea = Platform.select({
+  ios: () => require("react-native").SafeAreaView,
+  android: () => require("react-native-safe-area-context").SafeAreaView,
+})();
+
 const { width } = Dimensions.get("window");
 
 const HomeScreen = () => {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
 
   return (
-    <SafeAreaView>
+    <SafeArea>
       <ScrollView
         style={{
           padding: SPACING,
@@ -229,7 +234,7 @@ const HomeScreen = () => {
             ))}
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </SafeArea>
   );
 };
 
