@@ -1,6 +1,5 @@
 import {
   ScrollView,
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
@@ -19,12 +18,12 @@ import coffees from "../config/coffees";
 
 const avatar = require("../../assets/avatar.jpg");
 
+const { width } = Dimensions.get("window");
+
 const SafeArea = Platform.select({
   ios: () => require("react-native").SafeAreaView,
   android: () => require("react-native-safe-area-context").SafeAreaView,
 })();
-
-const { width } = Dimensions.get("window");
 
 const HomeScreen = () => {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
@@ -239,5 +238,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({});
